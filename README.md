@@ -12,6 +12,10 @@ In order to use the plugin you must use the 'create_app' function provided
 by the plugin. This function will return an instance of the investing 
 algorithm framework configured with the finterion platform.
 
+> **Note:** You must provide the API key of your algorithm in order to use 
+> the plugin. You can find your API keys in the developer dashboard of
+> your algorithm on the finterion platform.
+
 ```python
 import os
 import pathlib
@@ -22,7 +26,10 @@ from investing_algorithm_framework import RESOURCE_DIRECTORY, TimeUnit, \
     TradingTimeFrame, TradingDataType, OrderSide
 
 dir_path = os.path.abspath(os.path.join(os.path.realpath(__file__), os.pardir))
-app = create_app({RESOURCE_DIRECTORY: pathlib.Path(__file__).parent.resolve()})
+app = create_app(
+    api_key="<your_api_key>", 
+    config={RESOURCE_DIRECTORY: pathlib.Path(__file__).parent.resolve()}
+)
 
 
 @app.strategy(
