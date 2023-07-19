@@ -1,0 +1,2 @@
+investing-algorithm-framework>=1.1.2
+finterion>=0.2
