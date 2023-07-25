@@ -1,2 +1,2 @@
 investing-algorithm-framework>=1.1.2
-finterion>=0.3
+finterion>=0.4
