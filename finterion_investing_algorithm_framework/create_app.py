@@ -29,7 +29,6 @@ def create_app(
     portfolio_configuration = LogicfundsPortfolioConfiguration(
         api_key=api_key, trading_symbol=model['profile']['trading_symbol']
     )
-
     app = framework_create_app(
         config=config, web=web, stateless=stateless, initialize=initialize
     )
@@ -38,14 +37,12 @@ def create_app(
     )
     app.add_portfolio_configuration(portfolio_configuration)
 
-    if not stateless:
-        class PingTask(Task):
-            interval = 1
-            time_unit = TimeUnit.HOUR
+    class PingTask(Task):
+        interval = 30
+        time_unit = TimeUnit.MINUTES
 
-            def run(self, algorithm):
-                client.ping()
+        def run(self, algorithm):
+            client.ping()
 
-        app.add_task(PingTask)
-
+    app.add_task(PingTask)
     return app
