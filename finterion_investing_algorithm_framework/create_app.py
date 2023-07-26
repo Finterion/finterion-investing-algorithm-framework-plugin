@@ -40,7 +40,7 @@ def create_app(
 
     class PingTask(Task):
         interval = 30
-        time_unit = TimeUnit.MINUTES
+        time_unit = TimeUnit.MINUTE
 
         def run(self, algorithm):
             client.ping()
