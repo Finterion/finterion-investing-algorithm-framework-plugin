@@ -43,6 +43,7 @@ def create_app(
         time_unit = TimeUnit.MINUTE
 
         def run(self, algorithm):
+            logger.info("Pinging Finterion platform")
             client.ping()
 
     app.add_task(PingTask)
