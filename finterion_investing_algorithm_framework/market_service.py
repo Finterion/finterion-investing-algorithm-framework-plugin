@@ -6,9 +6,13 @@ from finterion import Finterion
 
 class FinterionMarketService(MarketService):
 
-    def __init__(self, api_key):
+    def __init__(self, api_key, base_url=None):
         self._api_key = api_key
-        self._finterion = Finterion(api_key)
+
+        if base_url is not None:
+            self._finterion = Finterion(api_key, base_url=base_url)
+        else:
+            self._finterion = Finterion(api_key)
 
     def initialize(self, portfolio_configuration):
         pass

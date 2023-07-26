@@ -17,9 +17,10 @@ def create_app(
     config={},
     stateless=False,
     web=False,
-    initialize=True
+    initialize=True,
+    base_url=None,
 ) -> App:
-    client = Finterion(api_key=api_key)
+    client = Finterion(api_key=api_key, base_url=base_url)
     client.ping()
     model = client.get_algorithm_model()
     logger.info(
@@ -33,7 +34,7 @@ def create_app(
         config=config, web=web, stateless=stateless, initialize=initialize
     )
     app.container.market_service.override(
-        FinterionMarketService(api_key=api_key)
+        FinterionMarketService(api_key=api_key, base_url=base_url)
     )
     app.add_portfolio_configuration(portfolio_configuration)
 
