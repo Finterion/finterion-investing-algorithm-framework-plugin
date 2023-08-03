@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from investing_algorithm_framework.infrastructure.services import MarketService
+from investing_algorithm_framework import Order
 from finterion import Finterion
 
 
@@ -18,10 +19,12 @@ class FinterionMarketService(MarketService):
         pass
 
     def get_order(self, order):
-        return self._finterion.get_order(order.external_id)
+        order = self._finterion.get_order(order.external_id)
+        return self._conver_order(order)
 
     def get_orders(self, symbol, since: datetime = None):
-        return self._finterion.get_orders(symbol=symbol)
+        orders = self._finterion.get_orders(symbol=symbol)
+        return [self._conver_order(order) for order in orders]
 
     def get_balance(self):
         positions = self._finterion.get_positions()
@@ -40,11 +43,12 @@ class FinterionMarketService(MarketService):
         trading_symbol: str,
         amount: float,
     ):
-        return self._finterion.create_market_order(
+        order = self._finterion.create_market_order(
             order_side="sell",
             amount=amount,
             target_symbol=target_symbol,
         )
+        return self._conver_order(order)
 
     def create_limit_sell_order(
         self,
@@ -53,12 +57,13 @@ class FinterionMarketService(MarketService):
         amount: float,
         price: float
     ):
-        return self._finterion.create_limit_order(
+        order = self._finterion.create_limit_order(
             order_side="sell",
             amount=amount,
             target_symbol=target_symbol,
             price=price
         )
+        return self._conver_order(order)
 
     def create_limit_buy_order(
         self,
@@ -67,9 +72,30 @@ class FinterionMarketService(MarketService):
         amount: float,
         price: float
     ):
-        return self._finterion.create_limit_order(
+        order = self._finterion.create_limit_order(
             order_side="buy",
             amount=amount,
             target_symbol=target_symbol,
             price=price
+        )
+        return self._conver_order(order)
+
+    def _conver_order(self, finterion_order):
+        return Order(
+            external_id=finterion_order.get("id"),
+            type=finterion_order.get("order_type"),
+            side=finterion_order.get("order_side"),
+            status=finterion_order.get("status"),
+            amount=finterion_order.get("amount"),
+            target_symbol=finterion_order.get("target_symbol"),
+            trading_symbol=finterion_order.get("trading_symbol"),
+            price=finterion_order.get("price"),
+            created_at=finterion_order.get("created_at"),
+            updated_at=finterion_order.get("updated_at"),
+            trade_closed_at=finterion_order.get("trade_closed_at"),
+            trade_closed_price=finterion_order.get("trade_closed_price"),
+            filled_amount=finterion_order.get("filled_amount"),
+            remaining_amount=finterion_order.get("remaining_amount"),
+            cost=finterion_order.get("cost"),
+            fee=finterion_order.get("fee"),
         )
