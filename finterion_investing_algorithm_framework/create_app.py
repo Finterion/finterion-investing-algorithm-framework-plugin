@@ -7,7 +7,7 @@ from investing_algorithm_framework import create_app as framework_create_app, \
 from finterion_investing_algorithm_framework.market_service import \
     FinterionMarketService
 from finterion_investing_algorithm_framework.models.portfolio_configuration \
-    import LogicfundsPortfolioConfiguration
+    import FinterionPortfolioConfiguration
 
 logger = logging.getLogger("finterion_investing_algorithm_framework_plugin")
 
@@ -23,7 +23,7 @@ def create_app(
     client = Finterion(api_key=api_key, base_url=base_url)
     client.ping()
     model = client.get_algorithm_model()
-    portfolio_configuration = LogicfundsPortfolioConfiguration(
+    portfolio_configuration = FinterionPortfolioConfiguration(
         api_key=api_key, trading_symbol=model['profile']['trading_symbol']
     )
     app = framework_create_app(
