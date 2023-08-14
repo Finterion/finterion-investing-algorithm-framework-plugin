@@ -1,6 +1,6 @@
 from finterion_investing_algorithm_framework.models.portfolio_configuration \
-    import LogicfundsPortfolioConfiguration
+    import FinterionPortfolioConfiguration
 
 __all__ = [
-    'LogicfundsPortfolioConfiguration',
+    'FinterionPortfolioConfiguration',
 ]
