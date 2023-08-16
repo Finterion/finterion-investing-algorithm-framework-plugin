@@ -7,24 +7,25 @@ from finterion import Finterion
 
 class FinterionMarketService(MarketService):
 
-    def __init__(self, api_key, base_url=None):
+    def __init__(self, api_key, base_url=None, initialize=True):
         self._api_key = api_key
 
-        if base_url is not None:
-            self._finterion = Finterion(api_key, base_url=base_url)
-        else:
-            self._finterion = Finterion(api_key)
+        if initialize:
+            if base_url is not None:
+                self._finterion = Finterion(api_key, base_url=base_url)
+            else:
+                self._finterion = Finterion(api_key)
 
     def initialize(self, portfolio_configuration):
         pass
 
     def get_order(self, order):
         order = self._finterion.get_order(order.external_id)
-        return self._conver_order(order)
+        return self._convert_order(order)
 
     def get_orders(self, symbol, since: datetime = None):
         orders = self._finterion.get_orders(symbol=symbol)
-        return [self._conver_order(order) for order in orders]
+        return [self._convert_order(order) for order in orders]
 
     def get_balance(self):
         positions = self._finterion.get_positions()
@@ -48,7 +49,7 @@ class FinterionMarketService(MarketService):
             amount=amount,
             target_symbol=target_symbol,
         )
-        return self._conver_order(order)
+        return self._convert_order(order)
 
     def create_limit_sell_order(
         self,
@@ -63,7 +64,7 @@ class FinterionMarketService(MarketService):
             target_symbol=target_symbol,
             price=price
         )
-        return self._conver_order(order)
+        return self._convert_order(order)
 
     def create_limit_buy_order(
         self,
@@ -78,9 +79,9 @@ class FinterionMarketService(MarketService):
             target_symbol=target_symbol,
             price=price
         )
-        return self._conver_order(order)
+        return self._convert_order(order)
 
-    def _conver_order(self, finterion_order):
+    def _convert_order(self, finterion_order):
         return Order(
             external_id=finterion_order.get("id"),
             type=finterion_order.get("order_type"),
