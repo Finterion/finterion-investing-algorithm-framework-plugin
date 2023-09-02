@@ -17,18 +17,17 @@ def create_app(
     config={},
     stateless=False,
     web=False,
-    initialize=True,
     base_url=None,
 ) -> App:
     client = Finterion(api_key=api_key, base_url=base_url)
     client.ping()
     model = client.get_algorithm_model()
     portfolio_configuration = FinterionPortfolioConfiguration(
-        api_key=api_key, trading_symbol=model['profile']['trading_symbol']
+        api_key=api_key,
+        trading_symbol=model['profile']['trading_symbol'],
+        market_data_markets=model['profile']['markets'],
     )
-    app = framework_create_app(
-        config=config, web=web, stateless=stateless, initialize=initialize
-    )
+    app = framework_create_app(config=config, web=web, stateless=stateless)
     app.container.market_service.override(
         FinterionMarketService(api_key=api_key, base_url=base_url)
     )
@@ -39,7 +38,7 @@ def create_app(
         time_unit = TimeUnit.MINUTE
 
         def run(self, algorithm):
-            logger.info("Pinging Finterion platform")
+            logger.debug("Pinging Finterion platform")
             client.ping()
 
     app.add_task(PingTask)
