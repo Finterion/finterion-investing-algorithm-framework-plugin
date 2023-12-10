@@ -21,8 +21,6 @@ class FinterionPortfolioConfiguration(PortfolioConfiguration):
                 "least one market to your algorithm on the finterion platform."
             )
 
-        self._market = market_data_markets[0]
-
     @property
     def identifier(self):
         return "finterion"

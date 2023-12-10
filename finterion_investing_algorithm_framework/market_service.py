@@ -1,16 +1,25 @@
 from datetime import datetime
-import ccxt
-from dateutil import parser
 from decimal import Decimal
 
-from investing_algorithm_framework.infrastructure.services import MarketService
-from investing_algorithm_framework import Order
-from investing_algorithm_framework.domain import OperationalException, \
-    parse_decimal_to_string
+from dateutil import parser
 from finterion import Finterion
+from investing_algorithm_framework import Order
+from investing_algorithm_framework.domain import parse_decimal_to_string
+from investing_algorithm_framework.infrastructure import CCXTMarketService
 
 
-class FinterionMarketService(MarketService):
+class FinterionMarketService(CCXTMarketService):
+
+    def cancel_order(self, order):
+        pass
+
+    def get_open_orders(self, target_symbol: str = None,
+                        trading_symbol: str = None):
+        pass
+
+    def get_closed_orders(self, target_symbol: str = None,
+                          trading_symbol: str = None):
+        pass
 
     def __init__(self, api_key, base_url=None, initialize=True):
         self._api_key = api_key
@@ -21,29 +30,6 @@ class FinterionMarketService(MarketService):
                 self._finterion = Finterion(api_key, base_url=base_url)
             else:
                 self._finterion = Finterion(api_key)
-
-    @property
-    def market(self):
-        return self._market
-
-    @market.setter
-    def market(self, value):
-
-        if not isinstance(value, str):
-            raise OperationalException("Market must be a string")
-
-        if value == "finterion":
-            return
-
-        self._market = value.lower()
-
-        if not hasattr(ccxt, self._market):
-            raise OperationalException(
-                f"No market service found for market id {self._market}"
-            )
-
-        self.exchange_class = getattr(ccxt, self._market)
-        self.exchange = self.exchange_class()
 
     def initialize(self, portfolio_configuration):
         pass
@@ -114,15 +100,15 @@ class FinterionMarketService(MarketService):
         order = Order(
             external_id=finterion_order.get("id"),
             order_type=finterion_order.get("order_type"),
-            side=finterion_order.get("order_side"),
+            order_side=finterion_order.get("order_side"),
             status=finterion_order.get("status"),
             amount=finterion_order.get("amount"),
             target_symbol=finterion_order.get("target_symbol"),
             trading_symbol=finterion_order.get("trading_symbol"),
             price=finterion_order.get("price"),
             trade_closed_price=finterion_order.get("trade_closed_price"),
-            filled_amount=finterion_order.get("filled"),
-            remaining_amount=finterion_order.get("remaining"),
+            filled=finterion_order.get("filled"),
+            remaining=finterion_order.get("remaining"),
             cost=finterion_order.get("cost"),
         )
 

@@ -21,8 +21,8 @@ class TestOrderModels(TestCase):
                     'updated_at': '2023-08-13T15:27:13.431205Z',
                     'trade_closed_at': '0001-01-01T00:00:00',
                     'trade_closed_price': 0,
-                    'filled_amount': 0,
-                    'remaining_amount': 0,
+                    'filled': 0,
+                    'remaining': 0,
                     'cost': 0
                 },
                 {
@@ -38,8 +38,8 @@ class TestOrderModels(TestCase):
                     'updated_at': '2023-08-13T15:27:26.715753Z',
                     'trade_closed_at': '0001-01-01T00:00:00',
                     'trade_closed_price': 0,
-                    'filled_amount': 0,
-                    'remaining_amount': 0,
+                    'filled': 0,
+                    'remaining': 0,
                     'cost': 0
                 },
                 {
@@ -55,8 +55,8 @@ class TestOrderModels(TestCase):
                     'updated_at': '2023-08-11T14:41:08.433805Z',
                     'trade_closed_at': '0001-01-01T00:00:00',
                     'trade_closed_price': 0,
-                    'filled_amount': 0,
-                    'remaining_amount': 0,
+                    'filled': 0,
+                    'remaining': 0,
                     'cost': 0
                 }
             ],
@@ -64,4 +64,5 @@ class TestOrderModels(TestCase):
         }
 
         for order in response_data['items']:
-            order = FinterionMarketService(None, initialize=False)._convert_order(order)
+            order = FinterionMarketService(None, initialize=False)\
+                ._convert_order(order)
