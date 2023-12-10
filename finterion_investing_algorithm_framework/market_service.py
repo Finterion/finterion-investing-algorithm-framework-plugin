@@ -44,12 +44,13 @@ class FinterionMarketService(CCXTMarketService):
 
     def get_balance(self):
         positions = self._finterion.get_positions()
-        entries = {}
+        entries = {"free": {}}
 
         for position in positions:
             entries[position["symbol"]] = {
                 "free": Decimal(position["amount"]),
             }
+            entries["free"][position["symbol"]] = Decimal(position["amount"])
 
         return entries
 
