@@ -1,5 +1,4 @@
 from datetime import datetime
-from decimal import Decimal
 
 from dateutil import parser
 from finterion import Finterion
@@ -10,18 +9,27 @@ from investing_algorithm_framework.infrastructure import CCXTMarketService
 
 class FinterionMarketService(CCXTMarketService):
 
-    def cancel_order(self, order):
+    def cancel_order(self, order, market):
         pass
 
-    def get_open_orders(self, target_symbol: str = None,
-                        trading_symbol: str = None):
+    def get_open_orders(
+        self, market, target_symbol: str = None, trading_symbol: str = None
+    ):
         pass
 
-    def get_closed_orders(self, target_symbol: str = None,
-                          trading_symbol: str = None):
+    def get_closed_orders(
+        self, market, target_symbol: str = None, trading_symbol: str = None
+    ):
         pass
 
-    def __init__(self, api_key, base_url=None, initialize=True):
+    def __init__(
+        self,
+        api_key,
+        market_credential_service,
+        base_url=None,
+        initialize=True
+    ):
+        super().__init__(market_credential_service)
         self._api_key = api_key
         self._market = "finterion"
 
@@ -34,23 +42,23 @@ class FinterionMarketService(CCXTMarketService):
     def initialize(self, portfolio_configuration):
         pass
 
-    def get_order(self, order):
-        order = self._finterion.get_order(order.external_id)
+    def get_order(self, order, market):
+        order = self._finterion.get_order(order.get_external_id())
         return self._convert_order(order)
 
-    def get_orders(self, symbol, since: datetime = None):
+    def get_orders(self, symbol, market, since: datetime = None):
         orders = self._finterion.get_orders(target_symbol=symbol)
         return [self._convert_order(order) for order in orders]
 
-    def get_balance(self):
+    def get_balance(self, market):
         positions = self._finterion.get_positions()
         entries = {"free": {}}
 
         for position in positions:
             entries[position["symbol"]] = {
-                "free": Decimal(position["amount"]),
+                "free": position["amount"],
             }
-            entries["free"][position["symbol"]] = Decimal(position["amount"])
+            entries["free"][position["symbol"]] = float(position["amount"])
 
         return entries
 
@@ -59,6 +67,7 @@ class FinterionMarketService(CCXTMarketService):
         target_symbol: str,
         trading_symbol: str,
         amount: float,
+        market
     ):
         order = self._finterion.create_market_order(
             order_side="sell",
@@ -72,7 +81,8 @@ class FinterionMarketService(CCXTMarketService):
         target_symbol: str,
         trading_symbol: str,
         amount,
-        price
+        price,
+        market
     ):
         order = self._finterion.create_limit_order(
             order_side="sell",
@@ -87,7 +97,8 @@ class FinterionMarketService(CCXTMarketService):
         target_symbol: str,
         trading_symbol: str,
         amount: float,
-        price: float
+        price: float,
+        market
     ):
         order = self._finterion.create_limit_order(
             order_side="buy",
@@ -125,5 +136,3 @@ class FinterionMarketService(CCXTMarketService):
             order.updated_at = parser.parse(finterion_order.get("updated_at"))
 
         return order
-
-

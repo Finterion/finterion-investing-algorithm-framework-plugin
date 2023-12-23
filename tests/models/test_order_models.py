@@ -1,6 +1,7 @@
 from unittest import TestCase
-from investing_algorithm_framework import Order
-from finterion_investing_algorithm_framework.market_service import FinterionMarketService
+
+from finterion_investing_algorithm_framework.market_service import \
+    FinterionMarketService
 
 
 class TestOrderModels(TestCase):
@@ -64,5 +65,7 @@ class TestOrderModels(TestCase):
         }
 
         for order in response_data['items']:
-            order = FinterionMarketService(None, initialize=False)\
+            order = FinterionMarketService(
+                None, initialize=False, market_credential_service=None
+            )\
                 ._convert_order(order)

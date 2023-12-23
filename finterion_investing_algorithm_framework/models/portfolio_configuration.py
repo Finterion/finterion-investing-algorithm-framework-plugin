@@ -4,13 +4,11 @@ from investing_algorithm_framework.domain import ImproperlyConfigured
 
 class FinterionPortfolioConfiguration(PortfolioConfiguration):
 
-    def __init__(self, api_key, trading_symbol, market_data_markets):
+    def __init__(self, trading_symbol, market_data_markets):
         try:
             super().__init__(
                 market="finterion",
                 trading_symbol=trading_symbol,
-                api_key=api_key,
-                secret_key=None,
             )
         except ImproperlyConfigured:
             pass
@@ -24,5 +22,3 @@ class FinterionPortfolioConfiguration(PortfolioConfiguration):
     @property
     def identifier(self):
         return "finterion"
-
-
