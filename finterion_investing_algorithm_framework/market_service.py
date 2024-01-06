@@ -3,7 +3,6 @@ from datetime import datetime
 from dateutil import parser
 from finterion import Finterion
 from investing_algorithm_framework import Order
-from investing_algorithm_framework.domain import parse_decimal_to_string
 from investing_algorithm_framework.infrastructure import CCXTMarketService
 
 
@@ -86,7 +85,7 @@ class FinterionMarketService(CCXTMarketService):
     ):
         order = self._finterion.create_limit_order(
             order_side="sell",
-            amount=parse_decimal_to_string(amount),
+            amount=str(amount),
             target_symbol=target_symbol,
             price=price
         )
