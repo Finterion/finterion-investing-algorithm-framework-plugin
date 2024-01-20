@@ -8,6 +8,7 @@ from finterion_investing_algorithm_framework.market_service import \
     FinterionMarketService
 from finterion_investing_algorithm_framework.models.portfolio_configuration \
     import FinterionPortfolioConfiguration
+from .validation import check_portfolio_active
 
 logger = logging.getLogger("finterion_investing_algorithm_framework_plugin")
 
@@ -22,6 +23,10 @@ def create_app(
     client = Finterion(api_key=api_key, base_url=base_url)
     client.ping()
     model = client.get_algorithm_model()
+
+    # Check that the portfolio is active
+    check_portfolio_active(client)
+
     portfolio_configuration = FinterionPortfolioConfiguration(
         trading_symbol=model['profile']['trading_symbol'],
         market_data_markets=model['profile']['markets'],
