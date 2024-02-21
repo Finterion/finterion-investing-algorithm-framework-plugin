@@ -27,6 +27,7 @@ def create_app(
     # Check that the portfolio is active
     check_portfolio_active(client)
 
+    # Add a finterion portfolio configuration
     portfolio_configuration = FinterionPortfolioConfiguration(
         trading_symbol=model['profile']['trading_symbol'],
         market_data_markets=model['profile']['markets'],
@@ -43,7 +44,7 @@ def create_app(
         FinterionMarketService(
             api_key=api_key,
             base_url=base_url,
-            market_credential_service=app.container.market_credential_service,
+            market_credential_service=app.container.market_credential_service(),
         )
     )
     app.add_portfolio_configuration(portfolio_configuration)

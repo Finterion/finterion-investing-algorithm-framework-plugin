@@ -4,7 +4,8 @@ from finterion_investing_algorithm_framework.exceptions import \
 
 
 def check_portfolio_active(finterion_client: Finterion):
-    portfolio = finterion_client.get_portfolio()
+    portfolio = finterion_client\
+        .get_portfolio(query_params={"ShowMetrics": "False"})
 
     if portfolio['active'] is False:
         raise FinterionInvestingAlgorithmFrameworkException(
