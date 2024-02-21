@@ -34,7 +34,7 @@ jobs:
       #----------------------------------------------
       - run: python -m pip install black flake8 isort
       - run: |
-          flake8 ./finterion
+          flake8 ./finterion_investing_algorithm_framework
   test:
     needs: linting
     strategy:
