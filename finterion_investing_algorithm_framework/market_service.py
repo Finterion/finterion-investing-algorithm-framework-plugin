@@ -156,7 +156,9 @@ class FinterionMarketService(CCXTMarketService):
             price=finterion_order.get("price"),
             trade_closed_price=finterion_order.get("trade_closed_price", None),
             trade_closed_at=finterion_order.get("trade_closed_at", None),
-            trade_closed_amount=finterion_order.get("trade_closed_amount", None),
+            trade_closed_amount=finterion_order.get(
+                "trade_closed_amount", None
+            ),
             filled=finterion_order.get("filled"),
             remaining=finterion_order.get("remaining"),
             cost=finterion_order.get("cost"),
