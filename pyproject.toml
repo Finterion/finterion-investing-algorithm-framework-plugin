@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "finterion-investing-algorithm-framework-plugin"
+name = "finterion-investing-algorithm-framework"
 version = "0.13.3"
 description = "This is the official plugin for the investing algorithm framework open source project."
 authors = ["marcvanduyn <marc@finterion.com>"]
