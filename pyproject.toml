@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "finterion-investing-algorithm-framework-plugin"
+version = "0.13.3"
+description = "This is the official plugin for the investing algorithm framework open source project."
+authors = ["marcvanduyn <marc@finterion.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+investing-algorithm-framework = "^2.4"
+finterion = "0.8.6"
+
+[tool.poetry.group.test.dependencies]
+coverage= "7.4.2"
+flake8 = "7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

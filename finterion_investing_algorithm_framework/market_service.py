@@ -4,6 +4,8 @@ from dateutil import parser
 from finterion import Finterion
 from investing_algorithm_framework import Order
 from investing_algorithm_framework.infrastructure import CCXTMarketService
+from finterion_investing_algorithm_framework.exceptions import \
+    FinterionInvestingAlgorithmFrameworkException
 
 
 class FinterionMarketService(CCXTMarketService):
@@ -20,6 +22,41 @@ class FinterionMarketService(CCXTMarketService):
         self, market, target_symbol: str = None, trading_symbol: str = None
     ):
         pass
+
+    def get_ticker(self, symbol, market):
+        """
+        Finterion does not support get_ticker, please specify a ticker market
+        data source for symbol {symbol}. Finterion can't provide this data.
+
+        Users should register their own ticker data sources to obtain ticker
+        data.
+        """
+        raise FinterionInvestingAlgorithmFrameworkException(
+            f"Finterion does not support get_ticker, please specify "
+            f"a ticker market data source for symbol {symbol}. Finterion "
+            f"can't provide this data."
+        )
+
+    def get_order_book(self, symbol, market):
+        raise FinterionInvestingAlgorithmFrameworkException(
+            f"Finterion does not support get_order_book, please specify "
+            f"an order book market data source for symbol {symbol}. Finterion "
+            f"can't provide this data."
+        )
+
+    def get_ohlcv(
+        self,
+        symbol,
+        time_frame,
+        from_timestamp,
+        market,
+        to_timestamp=None
+    ):
+        raise FinterionInvestingAlgorithmFrameworkException(
+            f"Finterion does not support get_ohlcv, please specify "
+            f"an ohlcv market data source for symbol {symbol}. Finterion "
+            f"can't provide this data."
+        )
 
     def __init__(
         self,
@@ -46,7 +83,7 @@ class FinterionMarketService(CCXTMarketService):
         return self._convert_order(order)
 
     def get_orders(self, symbol, market, since: datetime = None):
-        orders = self._finterion.get_orders(target_symbol=symbol)
+        orders = self._finterion.get_orders(target_symbol=symbol.split("/")[0])
         return [self._convert_order(order) for order in orders]
 
     def get_balance(self, market):
@@ -117,7 +154,11 @@ class FinterionMarketService(CCXTMarketService):
             target_symbol=finterion_order.get("target_symbol"),
             trading_symbol=finterion_order.get("trading_symbol"),
             price=finterion_order.get("price"),
-            trade_closed_price=finterion_order.get("trade_closed_price"),
+            trade_closed_price=finterion_order.get("trade_closed_price", None),
+            trade_closed_at=finterion_order.get("trade_closed_at", None),
+            trade_closed_amount=finterion_order.get(
+                "trade_closed_amount", None
+            ),
             filled=finterion_order.get("filled"),
             remaining=finterion_order.get("remaining"),
             cost=finterion_order.get("cost"),
