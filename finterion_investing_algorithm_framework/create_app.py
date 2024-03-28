@@ -2,7 +2,7 @@ import logging
 
 from finterion import Finterion
 from investing_algorithm_framework import create_app as framework_create_app, \
-    Task, TimeUnit, App, MarketCredential
+    Task, TimeUnit, App, MarketCredential, AppHook, Algorithm
 
 from finterion_investing_algorithm_framework.market_service import \
     FinterionMarketService
@@ -58,5 +58,11 @@ def create_app(
             logger.debug("Pinging Finterion platform")
             client.ping()
 
-    app.add_task(PingTask)
+    class PingAppHook(AppHook):
+
+        def on_run(self, app, algorithm: Algorithm):
+            algorithm.add_task(PingTask)
+
+    # Register the ping task to the algorithm
+    app.after_initialize(PingAppHook())
     return app

@@ -2,13 +2,13 @@
 name = "finterion-investing-algorithm-framework"
 version = "0.14.0"
 description = "This is the official plugin for the investing algorithm framework open source project."
-authors = ["marcvanduyn <marc@finterion.com>"]
+authors = ["Marc van Duyn <marc@finterion.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-investing-algorithm-framework = "^2.4"
-finterion = "0.8.6"
+investing-algorithm-framework = "^3.2.0"
+finterion = "^0.8.8"
 
 [tool.poetry.group.test.dependencies]
 coverage= "7.4.2"

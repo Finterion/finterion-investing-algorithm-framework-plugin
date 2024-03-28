@@ -9,7 +9,9 @@ from finterion_investing_algorithm_framework.exceptions import \
 
 
 class FinterionMarketService(CCXTMarketService):
-
+    """
+    Finterion market service implementation.
+    """
     def cancel_order(self, order, market):
         pass
 
@@ -87,14 +89,14 @@ class FinterionMarketService(CCXTMarketService):
         return [self._convert_order(order) for order in orders]
 
     def get_balance(self, market):
+        """
+        Finterion implementation of get_balance.
+        """
         positions = self._finterion.get_positions()
-        entries = {"free": {}}
+        entries = {}
 
         for position in positions:
-            entries[position["symbol"]] = {
-                "free": position["amount"],
-            }
-            entries["free"][position["symbol"]] = float(position["amount"])
+            entries[position["symbol"]] = float(position["amount"])
 
         return entries
 
@@ -176,3 +178,6 @@ class FinterionMarketService(CCXTMarketService):
             order.updated_at = parser.parse(finterion_order.get("updated_at"))
 
         return order
+
+    def get_symbols(self, market):
+        return self._finterion.get_supported_symbols()
