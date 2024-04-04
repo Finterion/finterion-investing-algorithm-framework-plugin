@@ -2,13 +2,13 @@
 
 [[package]]
 name = "aiodns"
-version = "3.1.1"
+version = "3.2.0"
 description = "Simple DNS resolver for asyncio"
 optional = false
 python-versions = "*"
 files = [
-    {file = "aiodns-3.1.1-py3-none-any.whl", hash = "sha256:a387b63da4ced6aad35b1dda2d09620ad608a1c7c0fb71efa07ebb4cd511928d"},
-    {file = "aiodns-3.1.1.tar.gz", hash = "sha256:1073eac48185f7a4150cad7f96a5192d6911f12b4fb894de80a088508c9b3a99"},
+    {file = "aiodns-3.2.0-py3-none-any.whl", hash = "sha256:e443c0c27b07da3174a109fd9e736d69058d808f144d3c9d56dbd1776964c5f5"},
+    {file = "aiodns-3.2.0.tar.gz", hash = "sha256:62869b23409349c21b072883ec8998316b234c9a9e36675756e8e317e8768f72"},
 ]
 
 [package.dependencies]
@@ -188,13 +188,13 @@ files = [
 
 [[package]]
 name = "ccxt"
-version = "4.2.85"
+version = "4.2.88"
 description = "A JavaScript / TypeScript / Python / C# / PHP cryptocurrency trading library with support for 100+ exchanges"
 optional = false
 python-versions = "*"
 files = [
-    {file = "ccxt-4.2.85-py2.py3-none-any.whl", hash = "sha256:116857633aeb4344430abde7eceec915413df2e5749085e896f6685f3e02ab64"},
-    {file = "ccxt-4.2.85.tar.gz", hash = "sha256:a679cbd76df5b081585ac5c8c11044a619bed3eda1cf06cab4ac5ed91f684f0e"},
+    {file = "ccxt-4.2.88-py2.py3-none-any.whl", hash = "sha256:d5584c0b51c308c6a9954d12dfbce548adc6d451c5d687bd1691573297cc5113"},
+    {file = "ccxt-4.2.88.tar.gz", hash = "sha256:b6b3c78fc8971d77f1614c6683955d1d5a7a0bce4bcfaa745721fab7c3360e47"},
 ]
 
 [package.dependencies]
@@ -922,13 +922,13 @@ testing = ["jaraco.test (>=5.4)", "pytest (>=6)", "pytest-checkdocs (>=2.4)", "p
 
 [[package]]
 name = "investing-algorithm-framework"
-version = "3.2.0"
+version = "3.3.1"
 description = "A framework for creating trading bots"
 optional = false
 python-versions = "<4.0.0,>=3.8.1"
 files = [
-    {file = "investing_algorithm_framework-3.2.0-py3-none-any.whl", hash = "sha256:c079eba3003804d7983d23fe20fbdb3dea0e92a95ca506dc325aac5848ed5ccc"},
-    {file = "investing_algorithm_framework-3.2.0.tar.gz", hash = "sha256:2bb3ec4faaaa4e869ccf25bab65f7bcbd4f3fcfe2aceeb1470983cef030dcb20"},
+    {file = "investing_algorithm_framework-3.3.1-py3-none-any.whl", hash = "sha256:e6c7df5eba626a8784f3e372b08a4872283c4405f479a6bfa760dbaf1c061a4b"},
+    {file = "investing_algorithm_framework-3.3.1.tar.gz", hash = "sha256:846b048b01ba3cb11c2a0805891c750f03648bbbd13d7d9fc40908cd14976d1a"},
 ]
 
 [package.dependencies]
@@ -1309,17 +1309,17 @@ xml = ["lxml (>=4.6.3)"]
 
 [[package]]
 name = "polars"
-version = "0.20.16"
+version = "0.20.18"
 description = "Blazingly fast DataFrame library"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "polars-0.20.16-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:7530148621b541221b8a36cfad27cc576d77c0739e82d8383ee3a699935a5f63"},
-    {file = "polars-0.20.16-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:92241d9aeb29de7c503d3b4f9191181f0831dd546ee6770e5c6fae3cead98edb"},
-    {file = "polars-0.20.16-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2b48593c44a20f09f1eb1449ea43e2e5a4adf3c82faf1fba797fb7364cfa2ca4"},
-    {file = "polars-0.20.16-cp38-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:0c504cfdc88f3e4262d5ecf637c10ae154565b94250ee4263a9f5f346397cf98"},
-    {file = "polars-0.20.16-cp38-abi3-win_amd64.whl", hash = "sha256:a1fa24ea374ff05766e43fe2f079d62edd682ade19e3e2d68526e9c7a3e23ddf"},
-    {file = "polars-0.20.16.tar.gz", hash = "sha256:7a9ebb85bfc9dd964490612b6fee2afbde91eee6bfaa590b731c7868d225210b"},
+    {file = "polars-0.20.18-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:e305f5e6c0b8dc37fe0ff3bb1143a8bf0341134e0b23dec7c50a148f426acceb"},
+    {file = "polars-0.20.18-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:26716f074301f583da9af93108d57da631622d6496cbcbb8c08476180953f408"},
+    {file = "polars-0.20.18-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5b3843f69228df68cb82e39647c212fde58671c064c25a0c4d544f9446160a7e"},
+    {file = "polars-0.20.18-cp38-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:4b775e9677d0050775243400def1f5de4dd02b5ee220873406abc4028228525e"},
+    {file = "polars-0.20.18-cp38-abi3-win_amd64.whl", hash = "sha256:73b81b9582c48f0ca4ae08c0adc56917b0c55682044bedf0eccd3f94e4e39169"},
+    {file = "polars-0.20.18.tar.gz", hash = "sha256:8a321cbdbb459e3c0cc1af2ce6ac930d0d3b5ccbeb2dd3e4237ad07d487fd290"},
 ]
 
 [package.dependencies]
@@ -1329,7 +1329,8 @@ pyarrow = {version = ">=7.0.0", optional = true, markers = "extra == \"pandas\""
 
 [package.extras]
 adbc = ["adbc-driver-manager", "adbc-driver-sqlite"]
-all = ["polars[adbc,cloudpickle,connectorx,deltalake,fastexcel,fsspec,gevent,numpy,pandas,plot,pyarrow,pydantic,pyiceberg,sqlalchemy,timezone,xlsx2csv,xlsxwriter]"]
+all = ["polars[adbc,async,cloudpickle,connectorx,deltalake,fastexcel,fsspec,gevent,numpy,pandas,plot,pyarrow,pydantic,pyiceberg,sqlalchemy,timezone,xlsx2csv,xlsxwriter]"]
+async = ["nest-asyncio"]
 cloudpickle = ["cloudpickle"]
 connectorx = ["connectorx (>=0.3.2)"]
 deltalake = ["deltalake (>=0.14.0)"]
@@ -1477,13 +1478,13 @@ files = [
 
 [[package]]
 name = "pycparser"
-version = "2.21"
+version = "2.22"
 description = "C parser in Python"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=3.8"
 files = [
-    {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
-    {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
+    {file = "pycparser-2.22-py3-none-any.whl", hash = "sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc"},
+    {file = "pycparser-2.22.tar.gz", hash = "sha256:491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"},
 ]
 
 [[package]]
@@ -1743,13 +1744,13 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "werkzeug"
-version = "3.0.1"
+version = "3.0.2"
 description = "The comprehensive WSGI web application library."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "werkzeug-3.0.1-py3-none-any.whl", hash = "sha256:90a285dc0e42ad56b34e696398b8122ee4c681833fb35b8334a095d82c56da10"},
-    {file = "werkzeug-3.0.1.tar.gz", hash = "sha256:507e811ecea72b18a404947aded4b3390e1db8f826b494d76550ef45bb3b1dcc"},
+    {file = "werkzeug-3.0.2-py3-none-any.whl", hash = "sha256:3aac3f5da756f93030740bc235d3e09449efcf65f2f55e3602e1d851b8f48795"},
+    {file = "werkzeug-3.0.2.tar.gz", hash = "sha256:e39b645a6ac92822588e7b39a692e7828724ceae0b0d702ef96701f90e70128d"},
 ]
 
 [package.dependencies]
@@ -1958,4 +1959,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "23b5cb2a00c9855f4f6f24f55f5de35ec9686dbd25f9acbfd427378c1840232e"
+content-hash = "e53e2d8fada9789ea8e03845a41e5141ce1885bc22f42545998fdfffd11968ab"
