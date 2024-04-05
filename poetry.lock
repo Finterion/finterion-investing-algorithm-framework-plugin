@@ -188,13 +188,13 @@ files = [
 
 [[package]]
 name = "ccxt"
-version = "4.2.88"
+version = "4.2.89"
 description = "A JavaScript / TypeScript / Python / C# / PHP cryptocurrency trading library with support for 100+ exchanges"
 optional = false
 python-versions = "*"
 files = [
-    {file = "ccxt-4.2.88-py2.py3-none-any.whl", hash = "sha256:d5584c0b51c308c6a9954d12dfbce548adc6d451c5d687bd1691573297cc5113"},
-    {file = "ccxt-4.2.88.tar.gz", hash = "sha256:b6b3c78fc8971d77f1614c6683955d1d5a7a0bce4bcfaa745721fab7c3360e47"},
+    {file = "ccxt-4.2.89-py2.py3-none-any.whl", hash = "sha256:7ec6b4532be758dfebea00957837a09ba567a9914987f5ab2d52d5b7d9cb76cc"},
+    {file = "ccxt-4.2.89.tar.gz", hash = "sha256:6689f5b425ed2a1853398d15bd1851283ebe99939a5da6a654bacc4a378e8c67"},
 ]
 
 [package.dependencies]
@@ -922,13 +922,13 @@ testing = ["jaraco.test (>=5.4)", "pytest (>=6)", "pytest-checkdocs (>=2.4)", "p
 
 [[package]]
 name = "investing-algorithm-framework"
-version = "3.3.1"
+version = "3.4.1"
 description = "A framework for creating trading bots"
 optional = false
 python-versions = "<4.0.0,>=3.8.1"
 files = [
-    {file = "investing_algorithm_framework-3.3.1-py3-none-any.whl", hash = "sha256:e6c7df5eba626a8784f3e372b08a4872283c4405f479a6bfa760dbaf1c061a4b"},
-    {file = "investing_algorithm_framework-3.3.1.tar.gz", hash = "sha256:846b048b01ba3cb11c2a0805891c750f03648bbbd13d7d9fc40908cd14976d1a"},
+    {file = "investing_algorithm_framework-3.4.1-py3-none-any.whl", hash = "sha256:25f4a8253a31afc32a55756d3a9f1356b1af8e71aa32959898485b5d60d6c96b"},
+    {file = "investing_algorithm_framework-3.4.1.tar.gz", hash = "sha256:4b356375789c148e5bc0fe965ecd71b232e574a296a2b3f6813c4224b773401e"},
 ]
 
 [package.dependencies]
@@ -1959,4 +1959,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "e53e2d8fada9789ea8e03845a41e5141ce1885bc22f42545998fdfffd11968ab"
+content-hash = "15f36e3eea783fbbda5dbf2dc8a088bb6ef821f04f1ff0b3bff6d55d430aed36"
