@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-investing-algorithm-framework = "^3.5.0"
+investing-algorithm-framework = "^3.5.1"
 finterion = "^0.8.8"
 
 [tool.poetry.group.test.dependencies]
