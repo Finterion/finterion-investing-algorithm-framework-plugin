@@ -922,13 +922,13 @@ testing = ["jaraco.test (>=5.4)", "pytest (>=6)", "pytest-checkdocs (>=2.4)", "p
 
 [[package]]
 name = "investing-algorithm-framework"
-version = "3.5.1"
+version = "3.5.2"
 description = "A framework for creating trading bots"
 optional = false
 python-versions = "<4.0.0,>=3.8.1"
 files = [
-    {file = "investing_algorithm_framework-3.5.1-py3-none-any.whl", hash = "sha256:a492a44f3fc026a2a325481aa51f10ac51147055e566b9aac3ecb000fc1fc7e2"},
-    {file = "investing_algorithm_framework-3.5.1.tar.gz", hash = "sha256:ea77e1ab951a38ca5ffafb51bf9a06b9f12b2fb0364e8276377e3f138f873b91"},
+    {file = "investing_algorithm_framework-3.5.2-py3-none-any.whl", hash = "sha256:92cc9653cccda2c3cb2e3aec1284bc710cf1be385ff940b88d1e79419f07b319"},
+    {file = "investing_algorithm_framework-3.5.2.tar.gz", hash = "sha256:139cc226b0a704bad88a19a6802696f8aa7d860bcb1168a6e62ad69f1b288cce"},
 ]
 
 [package.dependencies]
@@ -1959,4 +1959,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "3fc8fda2ae5c67394482d9c9e51e8a3d8b20191262223e2db507cb7397159f5a"
+content-hash = "3dec9fc42c6ca7733789787726e056bba227db2c049242ad16dda2d1172abc42"
