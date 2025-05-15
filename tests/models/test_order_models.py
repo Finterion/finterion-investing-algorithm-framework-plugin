@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from finterion_investing_algorithm_framework.market_service import \
-    FinterionMarketService
+from finterion_investing_algorithm_framework.utils import \
+    convert_finterion_order_to_order
 
 
 class TestOrderModels(TestCase):
@@ -64,8 +64,18 @@ class TestOrderModels(TestCase):
             'total': 3
         }
 
-        for order in response_data['items']:
-            order = FinterionMarketService(
-                None, initialize=False, market_credential_service=None
-            )\
-                ._convert_order(order)
+        for order_data in response_data['items']:
+            order = convert_finterion_order_to_order(order_data)
+            self.assertEqual(order.get_target_symbol(), order_data['target_symbol'])
+            self.assertEqual(order.get_trading_symbol(), order_data['trading_symbol'])
+            self.assertEqual(order.get_price(), order_data['price'])
+            self.assertEqual(order.get_amount(), order_data['amount'])
+            self.assertEqual(order.get_filled(), order_data['filled'])
+            self.assertEqual(order.get_remaining(), order_data['remaining'])
+            self.assertEqual(order.get_order_type(), order_data['order_type'])
+            self.assertEqual(
+                order.get_order_side().lower(), order_data['order_side'].lower()
+            )
+            self.assertEqual(
+                order.get_status().lower(), order_data['status'].lower()
+            )
