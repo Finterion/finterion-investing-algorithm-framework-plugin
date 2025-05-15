@@ -6,8 +6,8 @@ authors = ["Marc van Duyn <marc@finterion.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
-investing-algorithm-framework = "^3.5.2"
+python = "^3.10"
+investing-algorithm-framework = ">=6.5.2"
 finterion = "^0.8.8"
 
 [tool.poetry.group.test.dependencies]

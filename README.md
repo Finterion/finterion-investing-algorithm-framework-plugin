@@ -8,27 +8,38 @@ pip install finterion-investing-algorithm-framework
 ```
 
 ## Usage 
-In order to use the plugin you must use the 'create_app' function provided 
-by the plugin. This function will return an instance of the investing 
-algorithm framework configured with the finterion platform.
+In order to use the plugin you must register the following components in your investing algorithm framework application:
+- **FinterionOrderExecutor**: This component is responsible for executing orders on the finterion platform.
+- **FinterionPortfolioProvider**: This component is responsible for connecting the portfolio and syncing positions.
+- **FinterionPingHook**: This component is responsible for pinging the finterion platform.
 
 > **Note:** You must provide the API key of your algorithm in order to use 
 > the plugin. You can find your API keys in the developer dashboard of
 > your algorithm on the finterion platform.
 
+## Example
 ```python
-from finterion_investing_algorithm_framework import create_app
+import logging.config
+from dotenv import load_dotenv
 
-app = create_app(api_key="<YOUR_TRADING_BOT_FINTERION_API_KEY>")
+from investing_algorithm_framework import create_app, DEFAULT_LOGGING_CONFIG
 
-# Add your investing algorithm framework market data sources
-# ..... 
+from finterion_investing_algorithm_framework import \
+    FinterionPortfolioProvider, FinterionOrderExecutor, FinterionPingAction
 
-# Add your investing algorithm framework trading strategies
-# ....
 
-if __name__ == "__main__":
-    app.run()
+load_dotenv()
+logging.config.dictConfig(DEFAULT_LOGGING_CONFIG)
+
+app = create_app()
+app.on_strategy_run(FinterionPingAction)
+app.add_order_executor(FinterionOrderExecutor)
+app.add_portfolio_provider(FinterionPortfolioProvider)
+app.add_market(
+    market="Finterion",
+    api_key="<FINTERION_API_KEY>", # Or set the environment variable FINTERION_API_KEY
+    trading_symbol="EUR",
+)
 ```
 
 ## Documentation
