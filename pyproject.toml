@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 investing-algorithm-framework = ">=6.5.2"
-finterion = "^0.8.8"
+finterion = "^0.8.9"
 
 [tool.poetry.group.test.dependencies]
 coverage= "7.4.2"
