@@ -1,4 +1,13 @@
 # Finterion Investing Algorithm Framework Plugin
+
+<a href="https://www.finterion.com/" target="_blank">
+    <picture style="height: 30px;">
+    <source media="(prefers-color-scheme: dark)" srcset="static/sponsors/finterion-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="static/sponsors/finterion-light.png">
+    <img src="static/sponsors/finterion-light.png" alt="Finterion Logo" width="200px" height="50px">
+    </picture>
+</a>
+
 This is the official plugin for the [investing algorithm framework](https://investing-algorithm-framework.com) open source project.
 
 ## Installation
